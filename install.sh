@@ -27,7 +27,7 @@ case $STEP in
         sudo apt-get install -y nvidia-docker2
         sudo systemctl restart docker
         sudo systemctl restart docker.service
-        usermod -a -G docker $USER
+        sudo usermod -a -G docker $USER
     fi
     ;;
 N)
