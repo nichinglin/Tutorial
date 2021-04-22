@@ -1,17 +1,21 @@
-#!/bin/sh
+#!/bin/bash
 # Name: Monica Lin
 # Update: 09/19/2020
-DEBUG_MODE=false
+DEBUG_MODE=true
 chmod +x install.sh
-read -p "Two step installation script. Please key 1 or 2 to start installing QCRAFT INC. basic tools (1/2/N)?" STEP
+echo -e "Two step installation script. \n1) Install Nvidia Driver. \n2) Install Nvidia Docker."
+read -p "Please key 1 or 2 to start installing QCRAFT INC. basic tools (1/2/N)?" STEP
 case $STEP in
 1)
-    echo "Installing Nvidia Driver 440..."
+    NV="460"
+    read -p "Enter NVidia Driver Version (Default: ${NV}): " TEMP
+    NV=$TEMP
+    echo "Installing Nvidia Driver ${NV}..."
     if [ $DEBUG_MODE = "false" ]; then
         sudo apt-get update
         sudo apt-get install -y vim git git-lfs openssh-server build-essential stress htop psensor curl net-tools nmap python-dev libusb-1.0-0-dev libudev-dev python3-pip
         sudo add-apt-repository -y ppa:graphics-drivers/ppa
-        sudo apt-get install -y nvidia-driver-440
+        sudo apt-get install -y nvidia-driver-${NV}
         sudo apt-get install -y nvidia-cuda-toolkit
     fi
     echo "Pleae reboot and install step 2!"
