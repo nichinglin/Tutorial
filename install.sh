@@ -7,7 +7,7 @@ echo -e "Two step installation script. \n1) Install Nvidia Driver. \n2) Install 
 read -p "Please key 1 or 2 to start installing QCRAFT INC. basic tools (1/2/N)?" STEP
 case $STEP in
 1)
-    NV="460"
+    NV="460-server"
     read -p "Enter NVidia Driver Version (Default: ${NV}): " TEMP
     NV=$TEMP
     echo "Installing Nvidia Driver ${NV}..."
